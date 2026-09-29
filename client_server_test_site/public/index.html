@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client / Server Security Lab</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <h1>Client / Server Security Lab</h1>
+  <p class="sub">A small site for testing which values are controlled by the browser and which are controlled by the server.</p>
+
+  <section id="loginBox" class="card">
+    <h2>Login</h2>
+    <div class="row">
+      <input id="username" placeholder="alice or bob">
+      <input id="password" type="password" placeholder="password">
+      <button onclick="login()">Login</button>
+    </div>
+    <p class="hint">Demo accounts: alice / alice123 &nbsp; | &nbsp; bob / bob123</p>
+    <p id="loginMsg"></p>
+  </section>
+
+  <section id="app" class="card hidden">
+    <div class="top">
+      <h2>Account: <span id="who"></span></h2>
+      <button class="secondary" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="grid">
+      <div class="stat"><span>Coins</span><strong id="coins">-</strong></div>
+      <div class="stat"><span>Likes</span><strong id="likes">-</strong></div>
+      <div class="stat"><span>Followers</span><strong id="followers">-</strong></div>
+      <div class="stat"><span>XP</span><strong id="xp">-</strong></div>
+    </div>
+
+    <h3>Server operations</h3>
+    <div class="row">
+      <button onclick="addLike()">Add 1 Like</button>
+      <button onclick="claimXp()">Claim 10 XP</button>
+      <button class="secondary" onclick="refreshMe()">Refresh from server</button>
+    </div>
+
+    <h3>Inventory</h3>
+    <pre id="inventory"></pre>
+
+    <h3>Compare with another browser/account</h3>
+    <div class="row">
+      <input id="compareUser" value="alice" placeholder="alice or bob">
+      <button onclick="compare()">Read public server data</button>
+    </div>
+    <pre id="compareResult"></pre>
+
+    <div class="notice">
+      <b>Testing idea:</b> edit a displayed number using your browser's DevTools.
+      That changes the page you see locally. Then press "Refresh from server".
+      The server value should replace the local edit. Open the same account in another
+      browser to verify that local edits are not shared.
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
